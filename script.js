@@ -52,7 +52,7 @@ async function startVideo() {
     videoImageEl.style.transition = `transform 120s linear`;
     videoImageEl.style.transform = `scale(2) translateX(-25%)`;
 
-    await sleep(120000);
+    await sleep(150000);
 }
 
 async function sleep(ms) {
