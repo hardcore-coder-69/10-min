@@ -10,19 +10,50 @@ async function start() {
 
     for (let i = 0; i < data.length; i++) {
         let item = data[i];
-        
+        await showData(item);
+        await sleep(item.stayTime);
     }
 }
 
-async function showText() {
-    const subtitleEl = document.getElementById("subtitle");
+async function showData(item) {
+    const videoContainerEl = document.getElementById("video-container");
+    const videoAreaEl = document.getElementById("video-area");
+    const textAreaEl = document.getElementById("text-area");
     
+    if(item.textPosition === "left") {
+        videoContainerEl.style.flexDirection = "row";
+        textAreaEl.style.paddingRight = '20px';
+        videoAreaEl.style.paddingLeft = '20px';
+    } else if (item.textPosition === "right") {
+        videoContainerEl.style.flexDirection = "row-reverse";
+        textAreaEl.style.paddingLeft = '20px';
+        videoAreaEl.style.paddingRight = '20px';
+    }
+    
+    showText(item);
+    showImage(item);
 }
 
-async function showImage() {
-    const videoImageEl = document.getElementById("video-image");
-    videoImageEl.style.transition = `transform 120s linear`;
-    videoImageEl.style.transform = `scale(2) translateX(25%)`;
+async function showText(item) {
+    const textEl = document.getElementById("text");
+    textEl.innerText = item.text;
+}
+
+async function showImage(item) {
+    const imageEl = document.getElementById("image");
+    imageEl.style.transition = 'unset';
+    imageEl.style.transform = 'unset';
+    await sleep(100);
+
+    if(item.initialStyle) {
+        let exisitingStyles = imageEl.getAttribute('style');
+        imageEl.setAttribute('style', exisitingStyles + item.initialStyle);
+    }
+    await sleep(100);
+    
+    imageEl.src = item.url;
+    imageEl.style.transition = item.transition;
+    imageEl.style.transform = item.transform;
 }
 
 async function sleep(ms) {
