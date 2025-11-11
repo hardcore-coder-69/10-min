@@ -48,8 +48,8 @@ async function showImage(item) {
     if(item.initialStyle) {
         let exisitingStyles = imageEl.getAttribute('style');
         imageEl.setAttribute('style', exisitingStyles + item.initialStyle);
+        await sleep(100);
     }
-    await sleep(100);
     
     imageEl.src = item.url;
     imageEl.style.transition = item.transition;
