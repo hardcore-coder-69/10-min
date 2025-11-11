@@ -1,6 +1,11 @@
+const audioEl = document.getElementById("audio");
+audioEl.load();
+audioEl.loop = true;
+
 let running = false;
 document.addEventListener("click", function () {
     if (running) return;
+    audioEl.play();
     start();
     running = true;
 });
