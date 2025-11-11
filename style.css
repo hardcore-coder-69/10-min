@@ -9,12 +9,12 @@ body {
 .video-container {
     display: flex;
     flex-direction: row;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 30px;
     padding-right: 30px;
     width: calc(100vw - 60px);
-    height: calc(100vh - 100px);
+    height: calc(100vh - 20px);
     overflow: hidden;
 }
 
@@ -42,4 +42,14 @@ body {
 .text {
     font-size: 60px;
     font-weight: bold;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
 }

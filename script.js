@@ -1,26 +1,36 @@
 let running = false;
-document.addEventListener("click", function() {
+document.addEventListener("click", function () {
     if (running) return;
     start();
     running = true;
 });
 
 async function start() {
-    if(!data) return;
+    if (!data) return;
 
     for (let i = 0; i < data.length; i++) {
         let item = data[i];
         await showData(item);
         await sleep(item.stayTime);
+        await hideData(item);
     }
+}
+
+async function hideData(item) {
+    const videoContainerEl = document.getElementById("video-container");
+    const textEl = document.getElementById("text");
+    const imageEl = document.getElementById("image");
+    videoContainerEl.classList.add('fade-out');
+    await sleep(500);
 }
 
 async function showData(item) {
     const videoContainerEl = document.getElementById("video-container");
     const videoAreaEl = document.getElementById("video-area");
     const textAreaEl = document.getElementById("text-area");
-    
-    if(item.textPosition === "left") {
+    videoContainerEl.classList.remove('fade-out');
+
+    if (item.textPosition === "left") {
         videoContainerEl.style.flexDirection = "row";
         textAreaEl.style.paddingRight = '20px';
         videoAreaEl.style.paddingLeft = '20px';
@@ -29,7 +39,7 @@ async function showData(item) {
         textAreaEl.style.paddingLeft = '20px';
         videoAreaEl.style.paddingRight = '20px';
     }
-    
+
     showText(item);
     showImage(item);
 }
@@ -45,12 +55,12 @@ async function showImage(item) {
     imageEl.style.transform = 'unset';
     await sleep(100);
 
-    if(item.initialStyle) {
+    if (item.initialStyle) {
         let exisitingStyles = imageEl.getAttribute('style');
         imageEl.setAttribute('style', exisitingStyles + item.initialStyle);
         await sleep(100);
     }
-    
+
     imageEl.src = item.url;
     imageEl.style.transition = item.transition;
     imageEl.style.transform = item.transform;
