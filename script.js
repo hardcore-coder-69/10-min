@@ -46,7 +46,8 @@ async function showData(item) {
 
 async function showText(item) {
     const textEl = document.getElementById("text");
-    textEl.innerText = item.text;
+    await typeText(textEl, item.text, 100);
+    // textEl.innerText = item.text;
 }
 
 async function showImage(item) {
@@ -64,6 +65,13 @@ async function showImage(item) {
     imageEl.src = item.url;
     imageEl.style.transition = item.transition;
     imageEl.style.transform = item.transform;
+}
+
+async function typeText(textEl, text, delay = 100) {
+    for (let i = 0; i < text.length; i++) {
+        textEl.innerText = text.substring(0, i + 1);
+        await sleep(delay);
+    }
 }
 
 async function sleep(ms) {

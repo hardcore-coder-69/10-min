@@ -15,6 +15,6 @@ const data = [
         initialStyle: '',
         transform: "scale(2)",
         transition: "transform 5s ease-in",
-        stayTime: 5000
+        stayTime: 8000
     }
 ]
