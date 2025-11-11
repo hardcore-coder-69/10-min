@@ -10,6 +10,10 @@ async function start() {
 
     for (let i = 0; i < data.length; i++) {
         let item = data[i];
+        let delay = item.text.length * 100 + 2000;
+        item.stayTime = delay;
+        item.transition = `transform ${delay/1000}s ease-in`;
+
         await showData(item);
         await sleep(item.stayTime);
         await hideData(item);
@@ -47,7 +51,6 @@ async function showData(item) {
 async function showText(item) {
     const textEl = document.getElementById("text");
     await typeText(textEl, item.text, 100);
-    // textEl.innerText = item.text;
 }
 
 async function showImage(item) {
