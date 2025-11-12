@@ -10,72 +10,93 @@ document.addEventListener("click", function () {
     running = true;
 });
 
-const TYPING_DELAY = 80;
-const SHOW_TIME = 3000;
+const TYPING_DELAY = 70;
+const TEXT_SHOW_TIME = 3000;
 async function start() {
     if (!data) return;
 
     for (let i = 0; i < data.length; i++) {
         let item = data[i];
-        let delay = item.text.length * TYPING_DELAY + SHOW_TIME;
-        item.stayTime = delay;
-        item.transition = `transform ${delay/1000}s linear`;
 
-        await showData(item);
-        await sleep(item.stayTime);
-        await hideData(item);
+        if(item.text) {
+            await showText(item);
+        } else if(item.url) {
+            await showImage(item);
+        }
+
+        // await showData(item);
+        // await sleep(item.stayTime);
+        // await hideData(item);
     }
 }
 
 async function hideData(item) {
-    const videoContainerEl = document.getElementById("video-container");
+    // const videoContainerEl = document.getElementById("video-container");
     const textEl = document.getElementById("text");
     const imageEl = document.getElementById("image");
     videoContainerEl.classList.add('fade-out');
-    await sleep(500);
+    await sleep(300);
     imageEl.src = '';
 }
 
 async function showData(item) {
-    const videoContainerEl = document.getElementById("video-container");
-    const videoAreaEl = document.getElementById("video-area");
-    const textAreaEl = document.getElementById("text-area");
-    videoContainerEl.classList.remove('fade-out');
+    // const videoContainerEl = document.getElementById("video-container");
+    // const videoAreaEl = document.getElementById("video-area");
+    // const textAreaEl = document.getElementById("text-area");
+    // videoContainerEl.classList.remove('fade-out');
 
-    if (item.textPosition === "left") {
-        videoContainerEl.style.flexDirection = "row";
-        textAreaEl.style.paddingRight = '20px';
-        videoAreaEl.style.paddingLeft = '20px';
-    } else if (item.textPosition === "right") {
-        videoContainerEl.style.flexDirection = "row-reverse";
-        textAreaEl.style.paddingLeft = '20px';
-        videoAreaEl.style.paddingRight = '20px';
-    }
+    // if (item.textPosition === "left") {
+    //     videoContainerEl.style.flexDirection = "row";
+    //     textAreaEl.style.paddingRight = '20px';
+    //     videoAreaEl.style.paddingLeft = '20px';
+    // } else if (item.textPosition === "right") {
+    //     videoContainerEl.style.flexDirection = "row-reverse";
+    //     textAreaEl.style.paddingLeft = '20px';
+    //     videoAreaEl.style.paddingRight = '20px';
+    // }
 
-    showText(item);
-    showImage(item);
+    // await showText(item);
+    // await sleep(TEXT_SHOW_TIME);
+    // await showImage(item);
 }
 
 async function showText(item) {
+    const textAreaEl = document.getElementById("text-area");
     const textEl = document.getElementById("text");
-    await typeText(textEl, item.text, TYPING_DELAY);
+    textAreaEl.style.display = 'flex';
+    textEl.innerText = item.text;
+
+    textEl.classList.add('fade-in');
+    await sleep(item.stayTime);
+    textEl.classList.add('fade-out');
+    await sleep(500);
+    textAreaEl.style.display = 'none';
+    textEl.classList.remove('fade-in');
+    textEl.classList.remove('fade-out');
 }
 
 async function showImage(item) {
     const imageEl = document.getElementById("image");
     imageEl.style.transition = 'unset';
     imageEl.style.transform = 'unset';
-    await sleep(100);
-
-    if (item.initialStyle) {
-        let exisitingStyles = imageEl.getAttribute('style');
-        imageEl.setAttribute('style', exisitingStyles + item.initialStyle);
-        await sleep(100);
+    if(item.initialTransform) {
+        imageEl.style.transform = item.initialTransform;
     }
-
+    await sleep(100);
+    
     imageEl.src = item.url;
     imageEl.style.transition = item.transition;
     imageEl.style.transform = item.transform;
+    
+    imageEl.style.opacity = 0;
+    imageEl.classList.add('image-fade-in');
+    await sleep(500);
+    await sleep(item.stayTime - 500);
+    imageEl.classList.add('image-fade-out');
+    await sleep(500);
+    imageEl.classList.remove('image-fade-in');
+    imageEl.classList.remove('image-fade-out');
+    imageEl.src = '';
 }
 
 async function typeText(textEl, text, delay) {
