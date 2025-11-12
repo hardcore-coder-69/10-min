@@ -11,14 +11,15 @@ document.addEventListener("click", function () {
 });
 
 const TYPING_DELAY = 80;
+const SHOW_TIME = 3000;
 async function start() {
     if (!data) return;
 
     for (let i = 0; i < data.length; i++) {
         let item = data[i];
-        let delay = item.text.length * TYPING_DELAY + 2000;
+        let delay = item.text.length * TYPING_DELAY + SHOW_TIME;
         item.stayTime = delay;
-        item.transition = `transform ${delay/1000}s ease-in`;
+        item.transition = `transform ${delay/1000}s linear`;
 
         await showData(item);
         await sleep(item.stayTime);
@@ -32,6 +33,7 @@ async function hideData(item) {
     const imageEl = document.getElementById("image");
     videoContainerEl.classList.add('fade-out');
     await sleep(500);
+    imageEl.src = '';
 }
 
 async function showData(item) {
