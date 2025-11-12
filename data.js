@@ -19,5 +19,26 @@ const data = [
         textPosition: "left",
         initialStyle: '',
         transform: "scale(2)",
+    },
+    {
+        text: "Becuase it doesn't belong to our solar system.",
+        url: "./vs/5.png",
+        textPosition: "right",
+        initialStyle: '',
+        transform: "scale(2)",
+    },
+    {
+        text: "It came from somewhere outside",
+        url: "./vs/5.png",
+        textPosition: "right",
+        initialStyle: '',
+        transform: "scale(2)",
+    },
+    {
+        text: "it’s an interstellar visitor",
+        url: "./vs/6.png",
+        textPosition: "left",
+        initialStyle: '',
+        transform: "scale(2)",
     }
 ]
