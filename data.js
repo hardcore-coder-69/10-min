@@ -37,4 +37,28 @@ const data = [
     {
         text: "“ATLAS” is the name of the telescope system that discovered it",
     },
+    {
+        text: "It's speed is so fast that it will leave our solar system forever",
+    },
+    {
+        text: "Why scientists are so excited about it?",
+    },
+    {
+        text: "Because it comes from outside our solar system.",
+    },
+    {
+        text: "It may help us understand that how other star systems formed.",
+    },
+    {
+        text: "By studying it, we can learn about other star systems.",
+    },
+    {
+        text: "James Webb Space Telescope also took a look at 3I/ATLAS.",
+    },
+    {
+        text: "And it found something interesting.",
+    },
+    {
+        text: "That 3I/ATLAS is very different from comets in our solar system.",
+    },
 ]
