@@ -14,6 +14,7 @@ const TYPING_DELAY = 70;
 const TEXT_SHOW_TIME = 3000;
 async function start() {
     if (!data) return;
+    await sleep(2000);
 
     for (let i = 0; i < data.length; i++) {
         let item = data[i];
@@ -66,8 +67,10 @@ async function showText(item) {
     textAreaEl.style.display = 'flex';
     textEl.innerText = item.text;
 
+    let stayTime = item.text.length * 110;
+
     textEl.classList.add('fade-in');
-    await sleep(item.stayTime);
+    await sleep(stayTime);
     textEl.classList.add('fade-out');
     await sleep(500);
     textAreaEl.style.display = 'none';
