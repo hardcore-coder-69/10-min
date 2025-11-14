@@ -26,10 +26,24 @@ const data = [
         text: "becuase it doesn't belong our solar system"
     },
     {
+        url: "./vs/5.png",
+        initialTransform: 'scale(2)',
+        transform: "scale(1)",
+        transition: "transform 5s linear",
+        stayTime: 5000,
+    },
+    {
         text: "It came from somewhere outside.",
     },
     {
         text: "That's why we call it an interstellar visitor.",
+    },
+    {
+        url: "./vs/6.png",
+        initialTransform: 'scale(2)',
+        transform: "scale(1)",
+        transition: "transform 5s linear",
+        stayTime: 5000,
     },
     {
         text: "“3I” means it’s the third interstellar object.",
@@ -38,7 +52,21 @@ const data = [
         text: "“ATLAS” is the name of the telescope system that discovered it",
     },
     {
+        url: "./vs/3.png",
+        initialTransform: 'scale(1)',
+        transform: "scale(1.5)",
+        transition: "transform 5s linear",
+        stayTime: 5000,
+    },
+    {
         text: "It's speed is so fast that it will leave our solar system forever",
+    },
+    {
+        url: "./vs/6.png",
+        initialTransform: 'scale(2)',
+        transform: "scale(1)",
+        transition: "transform 5s linear",
+        stayTime: 5000,
     },
     {
         text: "Why scientists are so excited about it?",
@@ -47,18 +75,56 @@ const data = [
         text: "Because it comes from outside our solar system.",
     },
     {
+        url: "./vs/6.png",
+        initialTransform: 'scale(1)',
+        transform: "scale(2)",
+        transition: "transform 5s linear",
+        stayTime: 5000,
+    },
+    {
         text: "It may help us understand that how other star systems formed.",
     },
     {
-        text: "By studying it, we can learn about other star systems.",
+        url: "./vs/1.png",
+        initialTransform: 'scale(2)',
+        transform: "scale(1)",
+        transition: "transform 5s linear",
+        stayTime: 5000,
+    },
+    {
+        text: "By studying it, we can learn about other worlds.",
+    },
+    {
+        url: "./vs/2.png",
+        initialTransform: 'scale(2)',
+        transform: "scale(1)",
+        transition: "transform 5s linear",
+        stayTime: 5000,
     },
     {
         text: "James Webb Space Telescope also took a look at 3I/ATLAS.",
     },
     {
+        url: "./vs/4.png",
+        initialTransform: 'scale(1)',
+        transform: "scale(2)",
+        transition: "transform 5s linear",
+        stayTime: 5000,
+    },
+    {
         text: "And it found something interesting.",
     },
     {
-        text: "That 3I/ATLAS is very different from comets in our solar system.",
+        url: "./vs/4.png",
+        initialTransform: 'scale(2)',
+        transform: "scale(1)",
+        transition: "transform 5s linear",
+        stayTime: 5000,
+    },
+    {
+        text: "3I/ATLAS is very different from comets in our solar system.",
+    },
+    {
+        text: "That it could be made of stuff that we haven't seen before.",
     },
 ]
