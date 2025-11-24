@@ -16,19 +16,33 @@ async function start() {
     if (!data) return;
     await sleep(2000);
 
-    for (let i = 0; i < data.length; i++) {
-        let item = data[i];
+    await showVideo(data[0]);
+    
+    // for (let i = 0; i < data.length; i++) {
+    //     let item = data[i];
 
-        if(item.text) {
-            await showText(item);
-        } else if(item.url) {
-            await showImage(item);
-        }
+    //     if(item.text) {
+    //         await showText(item);
+    //     } else if(item.url) {
+    //         await showImage(item);
+    //     }
 
-        // await showData(item);
-        // await sleep(item.stayTime);
-        // await hideData(item);
-    }
+    //     // await showData(item);
+    //     // await sleep(item.stayTime);
+    //     // await hideData(item);
+    // }
+}
+
+async function showVideo(item) {
+    const videoEl = document.getElementById('video-item');
+    videoEl.src = item.src;
+    videoEl.play();
+
+    await sleep(5000);
+    videoEl.classList.add('shake-animation')
+    await sleep(1000);
+    videoEl.classList.remove('shake-animation')
+    videoEl.classList.add('shake-animation2')
 }
 
 async function hideData(item) {

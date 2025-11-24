@@ -9,12 +9,11 @@ body {
 }
 
 .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: row;
-    /* padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    padding-right: 30px; */
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -113,4 +112,32 @@ body {
 
 .audio {
     display: none;
+}
+
+.shake-animation {
+    animation: shakeAnimation 1s linear forwards;
+}
+
+.shake-animation2 {
+    animation: shakeAnimation2 2s linear forwards;
+}
+
+@keyframes shakeAnimation {
+    from {
+        transform: translate(-10%, -10%) scale(1.1) rotate(-5deg);
+    }
+
+    to {
+        transform: translate(10%, 10%) scale(1.1) rotate(5deg);
+    }
+}
+
+@keyframes shakeAnimation2 {
+    from {
+        transform: translate(10%, 10%) scale(1.1) rotate(5deg);
+    }
+    
+    to {
+        transform: translate(-10%, -10%) scale(1.1) rotate(-5deg);
+    }
 }
